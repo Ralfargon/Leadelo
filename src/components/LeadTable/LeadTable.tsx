@@ -17,27 +17,28 @@ const StyledColumns = styled.div`
 
 
 export default function LeadTable() {
-    const initialColumns: { [key: string]: { id: string; title: string; list: Lead[] } } = {
-        potential: {
-            id: "potential",
-            title: "Cliente em Potencial",
-            list: [],
-        },
-        confirmed: {
-            id: "confirmed",
-            title: "Dados Confirmados",
-            list: []
-        },
-        scheduled: {
-            id: "scheduled",
-            title: "Reunião Agendada",
-            list: []
-        }
-    }
+   
 
-    
+
     function columnsFromLocalStorage() {
-        const c = { ...initialColumns };
+        const c: { [key: string]: { id: string; title: string; list: Lead[] } } = {
+            potential: {
+                id: "potential",
+                title: "Cliente em Potencial",
+                list: [],
+            },
+            confirmed: {
+                id: "confirmed",
+                title: "Dados Confirmados",
+                list: []
+            },
+            scheduled: {
+                id: "scheduled",
+                title: "Reunião Agendada",
+                list: []
+            }
+        }
+
         leadsController.getLeads().forEach((lead) => {
             c[lead.status].list.push(lead);
         });
